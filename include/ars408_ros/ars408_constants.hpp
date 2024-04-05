@@ -22,7 +22,9 @@ namespace ars408
 const uint32_t RADAR_CFG = 0x200;
 const uint8_t RADAR_CFG_BYTES = 8;
 
-const uint32_t RADAR_STATE = 0x201;
+const uint32_t RADAR_STATE_0 = 0x201;
+const uint32_t RADAR_STATE_1 = 0x211;
+const uint32_t RADAR_STATE_2 = 0x221;
 const uint8_t RADAR_STATE_BYTES = 8;
 
 const uint32_t FILTER_CFG = 0x202;
@@ -61,16 +63,24 @@ const uint8_t CLUSTER_GENERAL_BYTES = 8;
 const uint32_t CLUSTER_QUALITY = 0x702;
 const uint8_t CLUSTER_QUALITY_BYTES = 5;
 
-const uint32_t OBJ_STATUS = 0x60A;
+const uint32_t OBJ_STATUS_0 = 0x60A;
+const uint32_t OBJ_STATUS_1 = 0x61A;
+const uint32_t OBJ_STATUS_2 = 0x62A;
 const uint8_t OBJ_STATUS_BYTES = 4;
 
-const uint32_t OBJ_GENERAL = 0x60B;
+const uint32_t OBJ_GENERAL_0 = 0x60B;
+const uint32_t OBJ_GENERAL_1 = 0x61B;
+const uint32_t OBJ_GENERAL_2 = 0x62B;
 const uint8_t OBJ_GENERAL_BYTES = 8;
 
-const uint32_t OBJ_QUALITY = 0x60C;
+const uint32_t OBJ_QUALITY_0 = 0x60C;
+const uint32_t OBJ_QUALITY_1 = 0x61C;
+const uint32_t OBJ_QUALITY_2 = 0x62C;
 const uint8_t OBJ_QUALITY_BYTES = 7;
 
-const uint32_t OBJ_EXTENDED = 0x60D;
+const uint32_t OBJ_EXTENDED_0 = 0x60D;
+const uint32_t OBJ_EXTENDED_1 = 0x61D;
+const uint32_t OBJ_EXTENDED_2 = 0x62D;
 const uint8_t OBJ_EXTENDED_BYTES = 8;
 
 const uint32_t OBJ_WARNING = 0x60E;

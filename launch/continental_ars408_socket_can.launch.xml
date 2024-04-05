@@ -3,19 +3,20 @@
   <arg name="launch_driver" default="true" />
 
   <!-- socket can param -->
-  <arg name="interface" default="can0" />
+  <arg name="interface" default="can1" />
   <arg name="receiver_interval_sec" default="0.01" />
 
   <!-- ARS408 driver param -->
-  <arg name="input/frame" default="/sensing/radar/can_tx" />
-  <arg name="output/objects" default="objects_raw" />
-  <arg name="output/scan" default="scan" />
+  <arg name="input/frame" default="/sensing/radar_front_right/from_can_bus" />
+  <arg name="output/objects" default="radar_objects_raw" />
+  <arg name="output/scan" default="radar_scan" />
   <arg name="publish_radar_track" default="true" />
-  <arg name="publish_radar_scan" default="false" />
+  <arg name="publish_radar_scan" default="true" />
   <arg name="output_frame" default="ars408" />
   <arg name="sequential_publish" default="false" />
   <arg name="size_x" default="1.8" />
   <arg name="size_y" default="1.8" />
+  <arg name="radar_id" default="0" />
 
   <include file="$(find-pkg-share ros2_socketcan)/launch/socket_can_receiver.launch.py" if="$(var launch_driver)">
     <arg name="interface" value="$(var interface)" />
@@ -32,5 +33,6 @@
     <arg name="sequential_publish" value="$(var sequential_publish)" />
     <arg name="size_x" value="$(var size_x)" />
     <arg name="size_y" value="$(var size_y)" />
+    <arg name="radar_id" value="$(var radar_id)" />
   </include>
 </launch>

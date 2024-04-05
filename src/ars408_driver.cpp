@@ -362,13 +362,16 @@ std::string Ars408Driver::Parse(
   const uint8_t & in_data_length)
 {
   switch (can_id) {
-    case ars408::RADAR_STATE:  /// 0x201 the current configuration and sensor state in message
+    case ars408::RADAR_STATE_0:  /// 0x201 the current configuration and sensor state in message
+    case ars408::RADAR_STATE_1:  /// 0x211 the current configuration and sensor state in message
+    case ars408::RADAR_STATE_2:  /// 0x221 the current configuration and sensor state in message
       if (ars408::RADAR_STATE_BYTES == in_data_length) {
         ParseRadarState(in_can_data);
       }
       break;
-    case ars408::OBJ_STATUS:  /// 0x60A contains list header information,
-                              /// i.e. the number of objects that are sent afterwards
+    case ars408::OBJ_STATUS_0:  /// 0x60A contains list header information, i.e. the number of objects that are sent afterwards
+    case ars408::OBJ_STATUS_1:
+    case ars408::OBJ_STATUS_2:
       if (ars408::OBJ_STATUS_BYTES == in_data_length) {
         // ars408::Obj_0_Status object_status = ParseObject0_Status(in_can_data);
         if (!sequential_publish_ && DetectedObjectsReady()) {
@@ -377,19 +380,25 @@ std::string Ars408Driver::Parse(
         ClearRadarObjects();
       }
       break;
-    case ars408::OBJ_GENERAL:  /// 0x60B contains the position and velocity of the objects
+    case ars408::OBJ_GENERAL_0:  /// 0x60B contains the position and velocity of the objects
+    case ars408::OBJ_GENERAL_1:  /// 0x61B contains the position and velocity of the objects
+    case ars408::OBJ_GENERAL_2:  /// 0x62B contains the position and velocity of the objects
       if (ars408::OBJ_GENERAL_BYTES == in_data_length) {
         ars408::RadarObject object = ParseObject1_General(in_can_data);
         AddDetectedObject(object);
       }
       break;
-    case ars408::OBJ_QUALITY:  /// 0x60C contains the quality information of the objects
+    case ars408::OBJ_QUALITY_0:  /// 0x60C contains the quality information of the objects
+    case ars408::OBJ_QUALITY_1:  /// 0x61C contains the quality information of the objects
+    case ars408::OBJ_QUALITY_2:  /// 0x62C contains the quality information of the objects
       if (ars408::OBJ_QUALITY_BYTES == in_data_length) {
         ars408::Obj_2_Quality object_quality = ParseObject2_Quality(in_can_data);
         UpdateObjectQuality(object_quality.Id, object_quality);
       }
       break;
-    case ars408::OBJ_EXTENDED:  /// 0x60D contains the quality information of the objects
+    case ars408::OBJ_EXTENDED_0:  /// 0x60D contains the quality information of the objects
+    case ars408::OBJ_EXTENDED_1:  /// 0x61D contains the quality information of the objects
+    case ars408::OBJ_EXTENDED_2:  /// 0x62D contains the quality information of the objects
       if (ars408::OBJ_EXTENDED_BYTES == in_data_length) {
         ars408::Obj_3_Extended object_ext_info = ParseObject3_Extended(in_can_data);
         UpdateObjectExtInfo(object_ext_info.Id, object_ext_info);

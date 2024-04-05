@@ -117,7 +117,7 @@ public:
 class RadarState : public RadarCommand
 {
 public:
-  RadarState() : RadarCommand(ars408::RADAR_STATE) {}
+  RadarState() : RadarCommand(ars408::RADAR_STATE_0) {}
   std::string ToString()
   {
     std::ostringstream stream;
@@ -500,7 +500,7 @@ public:
 class Obj_0_Status : RadarCommand
 {
 public:
-  Obj_0_Status() : RadarCommand(ars408::OBJ_STATUS) {}
+  Obj_0_Status() : RadarCommand(ars408::OBJ_STATUS_0) {}
   std::string ToString()
   {
     std::ostringstream stream;
@@ -528,7 +528,7 @@ public:
 class Obj_1_General : RadarCommand
 {
 public:
-  Obj_1_General() : RadarCommand(ars408::OBJ_GENERAL) {}
+  Obj_1_General() : RadarCommand(ars408::OBJ_GENERAL_0) {}
 
   /* 0       255       1 */
   /*
@@ -586,7 +586,7 @@ public:
   float RelativeLongitudinalAccelerationXRms;
   float RelativeLateralAccelerationYRms;
   float ExistenceProbability; /*Probability of existence*/
-  Obj_2_Quality() : RadarCommand(ars408::OBJ_QUALITY) {}
+  Obj_2_Quality() : RadarCommand(ars408::OBJ_QUALITY_0) {}
 };
 
 /*
@@ -600,7 +600,7 @@ public:
 class Obj_3_Extended : RadarCommand
 {
 public:
-  Obj_3_Extended() : RadarCommand(ars408::OBJ_EXTENDED) {}
+  Obj_3_Extended() : RadarCommand(ars408::OBJ_EXTENDED_0) {}
   /* 0       255       1 */
   /*
    * Object ID
